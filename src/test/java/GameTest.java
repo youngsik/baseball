@@ -38,17 +38,24 @@ class GameTest {
         }
     }
 
-
     @Test
     void returnSolvedResultMatchedNumber() {
         game.question = "123";
         GuessResult result = game.guess("123");
         assertNotNull(result);
-        assertEquals(result.isSolved(),true);
-        assertEquals(result.getStrikes(),3);
-        assertEquals(result.getBalls(),0);
-
-
-
+        assertEquals(result.isSolved(), true);
+        assertEquals(result.getStrikes(), 3);
+        assertEquals(result.getBalls(), 0);
     }
+
+    @Test
+    void returnSolvedResultUnMatchedNumber() {
+        game.question = "123";
+        GuessResult result = game.guess("567");
+        assertNotNull(result);
+        assertEquals(result.isSolved(), false);
+        assertEquals(result.getStrikes(), 0);
+        assertEquals(result.getBalls(), 0);
+    }
+
 }
