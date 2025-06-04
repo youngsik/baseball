@@ -7,13 +7,27 @@ public class Game {
             return new GuessResult(true, 3, 0);
         } else {
             int strikeCount=0;
+            int ballCount=0;
             for(int digit =0; digit<3; digit++) {
                 if(guessNumber.charAt(digit) == question.charAt(digit))
                 {
                     strikeCount++;
                 }
+                else
+                {
+                    for( int j =0; j<3; j++) {
+                        if (digit == j) {
+                            continue;
+                        } else {
+                            if (guessNumber.charAt(digit) == question.charAt(j)) {
+                                ballCount++;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
-            return new GuessResult(false, strikeCount, 0);
+            return new GuessResult(false, strikeCount, ballCount);
         }
     }
 
