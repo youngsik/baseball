@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,4 +39,16 @@ class GameTest {
     }
 
 
+    @Test
+    void returnSolvedResultMatchedNumber() {
+        game.question = "123";
+        GuessResult result = game.guess("123");
+        assertNotNull(result);
+        assertEquals(result.solved,true);
+        assertEquals(result.strikes,3);
+        assertEquals(result.balls,0);
+
+
+
+    }
 }
