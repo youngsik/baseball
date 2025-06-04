@@ -44,9 +44,9 @@ class GameTest {
         game.question = "123";
         GuessResult result = game.guess("123");
         assertNotNull(result);
-        assertEquals(result.solved,true);
-        assertEquals(result.strikes,3);
-        assertEquals(result.balls,0);
+        assertEquals(result.isSolved(),true);
+        assertEquals(result.getStrikes(),3);
+        assertEquals(result.getBalls(),0);
 
 
 
