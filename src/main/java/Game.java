@@ -6,23 +6,18 @@ public class Game {
         if (guessNumber.equals(question)) {
             return new GuessResult(true, 3, 0);
         } else {
-            int strikeCount=0;
-            int ballCount=0;
-            for(int digit =0; digit<3; digit++) {
-                if(guessNumber.charAt(digit) == question.charAt(digit))
-                {
+            int strikeCount = 0;
+            int ballCount = 0;
+            for (int digit = 0; digit < 3; digit++) {
+                if (guessNumber.charAt(digit) == question.charAt(digit)) {
                     strikeCount++;
-                }
-                else
-                {
-                    for( int j =0; j<3; j++) {
-                        if (digit == j) {
+                } else {
+                    for (int otherDigit = 0; otherDigit < 3; otherDigit++) {
+                        if (digit == otherDigit) {
                             continue;
-                        } else {
-                            if (guessNumber.charAt(digit) == question.charAt(j)) {
-                                ballCount++;
-                                break;
-                            }
+                        } else if (guessNumber.charAt(digit) == question.charAt(otherDigit)) {
+                            ballCount++;
+                            break;
                         }
                     }
                 }
