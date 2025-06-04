@@ -13,8 +13,6 @@ class GameTest {
         game = new Game();
     }
 
-
-
     @Test
     void createGame() {
         assertNotNull(game);
@@ -41,7 +39,6 @@ class GameTest {
     @Test
     void returnSolvedResultMatchedNumber() {
         generateQuestion("123");
-
         assertMatchedNumber(game.guess("123"), true,3,0);
     }
 
@@ -49,11 +46,16 @@ class GameTest {
     @Test
     void returnSolvedResultUnMatchedNumber() {
         generateQuestion("123");
-        GuessResult result = game.guess("567");
-
         assertMatchedNumber(game.guess("567"), false,0,0);
-
     }
+
+    @Test
+    void returnSolvedResultMatched2Strike0ballNumber() {
+        generateQuestion("123");
+        assertMatchedNumber(game.guess("127"), false,2,0);
+    }
+
+
 
     private void generateQuestion(String questionNumber) {
         game.question = questionNumber;
